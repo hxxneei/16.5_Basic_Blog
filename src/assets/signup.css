@@ -1,0 +1,90 @@
+.box {
+    width: 300px;
+    max-width: 300px;
+    left: 4px;
+    background-color: white;
+    display: flex;
+    flex-direction : column;
+    align-items: center;
+    border-radius: 20px;
+}
+.signupComponents {
+    background-color: white;
+    width: 350px;
+    height: 520px;
+    border-radius: 15px;
+    text-align: center;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+
+    /* ✅ 핵심 부분 */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.submit-title {
+    display: flex;
+    align-items: center;
+    color: #000;
+    font-family: "Noto Sans KR", sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 70px;
+}
+
+.id-box input, 
+.password-box2 input, 
+.password-again-box input,
+.nickname input {
+    border: none;
+    border-bottom: 1px solid #000;
+    outline: none;
+    font-size: 12px;
+    padding: 10px;
+    width: 270px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+
+    display: flex;
+    gap: 20px;
+}   
+
+.id-box , 
+.password-box2 , 
+.password-again-box ,
+.nickname {
+    display: flex;
+    margin-bottom: 28px;
+    flex-direction: column;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* 세로정렬 */
+}
+.submit-button, .reset-button {
+    width:  270px;
+    height: 30px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+.submit-button{
+    background-color: #946038;
+    margin-top: 40px;
+}
+.reset-button{
+    background-color: #8b8b8b;
+}
+

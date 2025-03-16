@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+
+
+.blogpostXlist {
+    
+    display: flex; /*  좌측(사이드바) + 우측(메인) 정렬 */
+    justify-content: center; 
+    gap: 39px;
+    width: 100%;
+
+    align-items: center; /*위쪽정렬*/
+    height: 100vh;
+    padding: 20px;
+}
+
+.listleft .listtop {
+    width: 250px;
+    height: 523px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #FFF;
+
+    flex-direction: column;
+    justify-content: space-between; /* 상단/중앙/하단 분리 */
+    align-items: stretch; /* 양쪽 다 늘어나게 (왼쪽 정렬) */
+    padding: 0;
+}
+
+.listleft .listtop .friendslist {
+
+    
+
+    font-size: 23px;
+    font-weight: 900;
+    color: #946038;
+    width: 100%; /* 가로 전체 */
+    text-align: left;
+    padding-left: 20px; /* 왼쪽 정렬 */
+    padding-top: 15px;
+    
+    
+}
+.listleft .listtop .notfriendslist {
+    font-size: 13px;
+    color: #969696;
+    font-weight: 900;
+    margin: auto;
+
+    padding-top: 180px;
+}
+.listleft .listtop .mainbutton{
+    background-color: #946038;
+    width: 180px;
+    height: 30px;
+
+
+    margin-top: 180px;
+}
+/* 오른쪽 */
+
+
+.listright .listtop {
+    width: 775px;
+    height: 51px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #FFF;
+
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    gap: 260px;
+    color: #946038;
+    font-family: "Noto Sans KR";
+    font-size: 18px;
+    font-style: normal;
+
+    line-height: normal;
+}
+
+/* bottom */
+
+.listright .listbottom {
+    width: 775px;
+    height: 450px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #FFF;
+    
+    margin-top: 20px;
+}
+.listright .listbottom .notpost {
+    color: #969696;
+    font-size: 13px;
+    font-weight: 900;
+    padding-top: 20px;
+    padding-right: 600px;
+}
+
+
+
