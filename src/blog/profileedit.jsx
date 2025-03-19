@@ -32,18 +32,22 @@ function ProfileEdit() {
                 <div className="profile-info">
                     <div className="info-item">
                         <label>이름</label>
+                        <span className="separator">|</span>
                         <div className="info-value">{name}</div>
                     </div>
                     <div className="info-item">
                         <label>거주지</label>
+                        <span className="separator">|</span>
                         <div className="info-value">{address}</div>
                     </div>
                     <div className="info-item">
                         <label>생년월일</label>
+                        <span className="separator">|</span>
                         <div className="info-value">{birthDate}</div>
                     </div>
                     <div className="info-item">
                         <label>전화번호</label>
+                        <span className="separator">|</span>
                         <div className="info-value">{phoneNumber}</div>
                     </div>
                 </div>

@@ -2,55 +2,66 @@
 
 .profileedit {
     width: 1028px;
-    height: 520px;
+    height: auto;
     flex-shrink: 0;
     border-radius: 15px;
     background: #FFF;
-    padding: 0;
-    
+    /* padding: 0; */
+    padding-bottom: 3px;
 }
 .all-profile {
     display: flex;
     justify-content: space-between;
     gap: 20px;
     margin: 20px 0;
+    margin-bottom: 0px;
 }
+
 .profile-header {
-    position: relative;
+    display: flex;  /* 가로 정렬 */
+    align-items: center;  /* 세로 중앙 정렬 */
+    gap: 20px; /* 프로필 사진과 닉네임 사이 간격 */
+    padding-top: 30px;
+    padding-left: 60px; /* 닉네임이 너무 붙지 않게 */
 }
+
+.profile-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #d9d9d9;
+    flex-shrink: 0; /* 크기 유지 */
+}
+
 .profileedit .nickname {
-    font-size: 28px;
+    font-size: 30px;
     font-weight: 900;
-  }
-  
+    margin: 0;
+    white-space: nowrap; /* 닉네임 줄바꿈 방지 */
+}
+
+.image-edit {
+    font-size: 10px;
+    color: #777;
+    text-align: center;
+    display: flex;
+    padding-left: 73px; 
+    padding-top: 10px;
+}
+
 .left-profile .profile-info {
-    margin-top: 50px;
+    margin-top: 0px;
+}
+
+.separator {
+    margin: 0 10px; /* 🔥 이름과 값 사이 간격 조정 */
+    color: #555; /* 🔥 구분선 색상 */
+    font-weight: bold;
 }
 
 .right-profile .intro-box{
-    margin-top: 50px;
-}
-.profile-circle {
-    position: absolute;
-
-    width: 120px;
-    height: 120px;
-    border-radius: 120px;
-    background-color: #d9d9d9;
-
-    margin-top: 40px;
-    margin-left: 60px;
-
-    display: flex;
-    
-    justify-content: center;
-    
-}
-.profileedit .nickname {
-    font-size: 23px;
-}
-
-  
+    margin-top: 0px;
+} 
  
 .left-profile {
     width: 50%;
@@ -72,43 +83,60 @@
     justify-content: space-between; /* 양쪽 정렬 */
     background: #d9d9d9;
     padding: 10px 15px;
-    border-radius: 15px;
+    border-radius: 13px;
     margin-bottom: 40px;
-    margin-left: 80px;
+    margin-left: 140px;
 
 
-    height: 38px;
-    width: 420px;
+    height: 30px;
+    width: 380px;
 
 }
-  
-
 .info-item label {
     font-weight: bold;
     display: block;
-    margin-bottom: 5px;
+    font-size: 13px;
 
 }
+.info-item {
+    display: flex;
+    align-items: center;
+    background: #d9d9d9;
+    padding: 10px 15px;
+    border-radius: 13px;
+    margin-bottom: 40px;
+    margin-left: 140px;
+    height: 30px;
+    width: 380px;
+}
+
+.info-item label {
+    font-weight: bold;
+    font-size: 13px;
+    width: 80px; /* 🔥 고정된 너비로 균형 맞추기 */
+    text-align: left;
+}
   
+
 
 .info-value {
     color: #555;
-
+    font-size: 13px;
+    text-align: left; /* 🔥 왼쪽 정렬 */
+    flex-grow: 1; /* 🔥 값을 왼쪽으로 밀기 */
 }
   
-
+/* 오른쪽 */
 
 .intro-box {
     background: #d9d9d9;
     padding: 15px; /* 여백 여유 */
     border-radius: 15px; /* 둥근 테두리 */
     width: 100%; /* 부모 기준 꽉차게 */
-    max-width: 330px; /* 최대 너비 제한 */
+    max-width: 320px; /* 최대 너비 제한 */
     box-sizing: border-box;
     margin: 0 auto; /* 가운데 정렬 */
-
-   
-
+    margin-right: 145px;
 }
 
 .intro-box label {
@@ -117,7 +145,6 @@
     font-weight: 900;
     text-align: left; /* 왼쪽 정렬 */
     font-size: 14px;
-    padding-bottom: 5px;
     
     border-bottom: 1px solid #999;
     
@@ -127,7 +154,7 @@
 
 textarea {
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     padding-left: 6px;
     padding: 1px;
     resize: none;
@@ -136,18 +163,32 @@ textarea {
     background: #d9d9d9; /* 내부 배경 흰색으로 분리 */
     box-sizing: border-box;
     width: 100%; 
-    height: 205px; 
+    height: 175px; 
     font-size: 13px;
     color: #333;
     
 }
 
-
 .buttons {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-
+    gap: 50px; /* 버튼 사이 간격 조정 */
+    margin-top: -20px;
+    position: relative;
 }
+
+.buttons button {
+    background: none; /* 배경 없애기 */
+    border: none; /* 기본 테두리 없애기 */
+    font-size: 16px; /* 글자 크기 조정 */
+    color: #999; /* 회색 글씨 */
+    cursor: pointer; /* 마우스 올리면 클릭 가능하도록 */
+    font-weight: bold;
+    text-decoration: underline; /* 밑줄 추가 */
+}
+
+.buttons button:hover {
+    color: #666; /* 마우스 올리면 색 진하게 */
+}
+
  
