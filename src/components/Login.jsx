@@ -15,6 +15,7 @@ function Login() {
     try {
       const response = await loginUser(loginId, password); //  API 호출
       console.log("로그인 성공:", response);
+      sessionStorage.setItem("name", response.name);
 
       alert(`로그인 성공! 환영합니다, ${response.name}님!`);
       navigate("/Blogmainnotpost"); //  로그인 성공 시 이동
@@ -52,7 +53,7 @@ function Login() {
           />
         </div>
         
-        <button type="submit">LOGIN</button> {/* 🔥 API 요청 실행 */}
+        <button type="submit">LOGIN</button> {/* API 요청 실행 */}
       </form>
 
       <div className="signup-text">

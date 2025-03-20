@@ -1,226 +1,161 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap");
 
 .blogMainfriendlist {
-    
-    display: flex; /*  좌측(사이드바) + 우측(메인) 정렬 */
-    justify-content: center; 
-    gap: 39px;
-    width: 100%;
+  display: flex; /*  좌측(사이드바) + 우측(메인) 정렬 */
+  justify-content: center;
+  gap: 39px;
+  width: 100%;
 
-    align-items: center; /*위쪽정렬*/
-    height: 100vh;
-    padding: 20px;
+  align-items: center; /*위쪽정렬*/
+  height: 100vh;
+  padding: 20px;
 }
 
 .left .top {
-    width: 214px;
-    height: 230px;
-    flex-shrink: 0;
-    border-radius: 15px;
-    background: #FFF;
+  width: 214px;
+  height: 230px;
+  flex-shrink: 0;
+  border-radius: 15px;
+  background: #fff;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.left .top .circle{
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: #D9D9D9;;
-    display: flex;
-    
-    justify-content: center;
-    font-weight: bold;
-    
+.left .top .circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  display: flex;
+
+  justify-content: center;
+  font-weight: bold;
 }
 .left .top .nameContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .left .top .intro {
-    color: #000;
-    font-family: "Noto Sans KR";
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 900;
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 900;
 
-    text-align: start;
+  text-align: start;
 
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .left .top .intro2 {
-    color: #000;
-    font-family: "Noto Sans KR";
-    font-size: 17px;
-    font-weight: 100;
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 17px;
+  font-weight: 100;
 
-    text-align: start;
-    margin-right: 80px;
+  text-align: start;
+  margin-right: 80px;
 
-    margin-bottom: 20px;
-
-} 
-.left .top .edit  {
-    display: flex;
-    justify-content: center;
-
-    color: #969696;
-    font-family: "Noto Sans KR";
-    font-size: 8px;
-    font-style: normal;
-    font-weight: 900;
-    line-height: normal;
-    text-decoration-line: underline;
-    text-decoration-style: solid;
-    text-decoration-skip-ink: auto;
-    text-decoration-thickness: 11%; /* 1.32px */
-    text-underline-offset: 23%; /* 2.76px */
-    text-underline-position: from-font;
-
-    gap: 90px;
-    margin-top: 10px;
-    margin-bottom: 0px;
+  margin-bottom: 20px;
 }
+.left .top .edit {
+  display: flex;
+  justify-content: center;
 
-.left .bottom {
-    width: 214px;
-    height: 270px;
-    flex-shrink: 0;
-    border-radius: 15px;
-    background: #FFF;
+  color: #969696;
+  font-family: "Noto Sans KR";
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: 11%; /* 1.32px */
+  text-underline-offset: 23%; /* 2.76px */
+  text-underline-position: from-font;
 
-    margin-top: 20px;
+  gap: 90px;
+  margin-top: 10px;
+  margin-bottom: 0px;
 }
-
-
-.left .bottom .myPost {
-    font-family: "Noto Sans KR", sans-serif;
-
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: start;
-
-    padding-top: 17px;
-    padding-left: 16px ;
-    font-weight: 900 !important;
-    font-size: 13px;
-}
-.left .bottom .myPosts {
-
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: flex-start;
-    text-align: start;
-
-    padding-top: 13px;
-    padding-left: 30px;
-    font-weight: 400;
-    font-size: 10px;
-
-    gap: 20px;
-    line-height: 1.1;
-    list-style: none;
-    margin-top: 0px;
-}
-.left .bottom .post1 {
-    font-family: "Noto Sans KR";
-    font-weight: 900;
-    font-size: 10px;
-}
-
-.left .bottom .myPosts li:first-child {
-    font-weight: 900;
-}
-
-.right .bottom .circle {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: #D9D9D9;;
-    
-    font-weight: bold;
-
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-
-    margin-bottom: 10px;
-    margin-top: 10px;
-    
-}
-.right .bottom .profile {
-    display: flex; 
-    align-items: center; 
-    gap: 20px; 
-    padding: 20px 0; 
-    border-bottom: 1px solid #ccc; 
-    
-    width: 90%;
-    margin: 0 auto;
-   
-    padding-top: 25px;
-}
-
-.right .bottom .name{
-    font-size: 21px;
-    font-weight: 900;
-
-    width: 180px;
-
-    
-
-    display: flex;
-    
-    align-items: center; 
-} 
 
 /* 오른쪽 */
 
 .right {
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 700px;
+  justify-content: center;
 }
 
+.friends-container {
+  width: 100%; /* 가로 꽉 */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px; /* 친구 간격 */
+  padding: 0 15px;
+  box-sizing: border-box;
 
-/* top */
+  overflow-y: scroll;
+  overflow-x: hidden;
 
-.right .top {
-    width: 775px;
-    height: 51px;
-    flex-shrink: 0;
-    border-radius: 15px;
-    background: #FFF;
+  background-color: white;
 
-    display:flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+  border-radius: 15px;
+  background: #fff;
 
-    gap: 260px;
-    color: #946038;
-    font-family: "Noto Sans KR";
-    font-size: 18px;
-    font-style: normal;
+  margin-top: 20px;
+}
+.right .profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 40px;
+  padding: 0px;
+  padding-top: 15px;
+  padding-right: 0px;
+  padding-left: 15px;
+  width: 100%;
 
-    line-height: normal;
+  margin: 0 auto;
+}
+.right .human {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  width: 100%;
+  height: 100%;
+}
+.right .line {
+  border-bottom: #969696 solid 1px;
+  width: 100%;
+}
+.right .circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+
+  font-weight: bold;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-/* bottom */
+.right .name {
+  font-size: 21px;
+  font-weight: 900;
 
-.right .bottom {
-    width: 775px;
-    height: 450px;
-    flex-shrink: 0;
-    border-radius: 15px;
-    background: #FFF;
-    
+  width: 180px;
 
-    margin-top: 20px;
+  display: flex;
+
+  align-items: center;
 }

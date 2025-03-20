@@ -1,86 +1,127 @@
-import React, {useState} from "react"; 
+import React, { useState } from "react"; 
 import "../assets/signup.css";
-import { Link } from "react-router-dom";
-import SignupComplete from "./signupComplete";
-import Login from "./Login";
+import { Link, useNavigate } from "react-router-dom";
+import { registerUser } from "../api"; //  회원가입 API 추가
 
-function Signup() { // 컴포넌트 이름은 꼭 대문자로
-    const [id, setId] = useState(''); // 정상 상태의 데이터들을 저장함
+function Signup() { 
+    const [loginId, setLoginId] = useState(''); 
     const [password, setPassword] = useState('');
     const [confirm, setConfirm] = useState('');
     const [nickname, setNickname] = useState('');
 
-    const [idError, setIdError] = useState(''); // 잘못입력한 데이터들을 저장함
     const [passwordError, setPasswordError] = useState('');
     const [confirmError, setConfirmError] = useState('');
+    const [signupError, setSignupError] = useState(''); //  서버 응답 에러 저장
 
-    const [isIdCheck, setIsIdCheck] = useState(false);
-    const [isIdAvailable, setIsIdAvailable] = useState(false);
-    
+    const navigate = useNavigate();
+
     // 비밀번호 정규식
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,16}$/;
 
     const handlePasswordChange = (e) => {
         const value = e.target.value;
         setPassword(value);
-
-        if (!passwordRegex.test(value)) {
-            setPasswordError("비밀번호는 8~16자리, 대소문자, 숫자, 특수문자 포함하지?");
-        } else {
+        if(!passwordRegex.test(value)){
+            setPasswordError("비밀번호는 8~16자리, 대소문자, 숫자, 특수문자 포함해야 합니다.");
+        }else{
             setPasswordError("");
+
         }
+        // setPasswordError(!passwordRegex.test(value) ? "비밀번호는 8~16자리, 대소문자, 숫자, 특수문자 포함해야 합니다." : "");
     };
 
-    // 비밀번호 확인체크
     const handleConfirmChange = (e) => {
         const value = e.target.value;
         setConfirm(value);
-        setConfirmError(value !== password ? "비밀번호가 일치하지 않습니다" : "");
+        setConfirmError(value !== password ? "비밀번호가 일치하지 않습니다." : "");
     };
 
-    return( // return 꼭
+    //  회원가입 API 요청
+    const handleSignup = async (e) => {
+        e.preventDefault();
+
+        if (password !== confirm) {
+            setConfirmError("비밀번호가 일치하지 않습니다.");
+            return;
+        }
+        if(passwordError!=""){
+            alert("비밀번호 형식을확인해주세요");
+            return;
+        }
+
+        try {
+            const response = await registerUser(loginId, password, nickname);
+            console.log("회원가입 성공:", response);
+
+            alert("회원가입 성공! 로그인 페이지로 이동합니다.");
+            navigate("/signupComplete"); //  회원가입 완료 페이지로 이동
+        } catch (error) {
+            console.error("회원가입 실패:", error.response?.data?.message || "서버 오류");
+            setSignupError(error.response?.data?.message || "회원가입 실패! 다시 시도해주세요.");
+        }
+    };
+
+    return (
         <div className="signupComponents"> 
             <h1 className="submit-title">회원가입</h1> 
-            <div>
+            <form onSubmit={handleSignup}>
                 {/* 아이디 입력 */}
-            <div className="id-box">
-                <input type="text" placeholder="아이디를 입력해주세요"required/>
-            </div>
-                {/* 비밀번호 입력 */}
-            <div className="password-box2">
-                <input type="password"
-                placeholder="비밀번호를 입력해주세요"
-                value={password}
-                onChange={handlePasswordChange}
-                required/>
-                {passwordError && <p style={{ color: "red" }}>{passwordError}</p>}
-            </div>
-                {/* 비밀번호 확인 */}
-            <div className="password-again-box">
-                <input type="password"
-                placeholder="비밀번호를 다시 입력해주세요"
-                value={confirm}
-                onChange={handleConfirmChange}
-                required/>
-            </div>
-            <div className="nickname">
-                <input type="text" placeholder="닉네임을 입력해주세요" required/>
-            </div>
+                <div className="id-box">
+                    <input 
+                        type="text" 
+                        placeholder="아이디를 입력해주세요"
+                        value={loginId}
+                        onChange={(e) => setLoginId(e.target.value)}
+                        required
+                    />
+                </div>
 
-            <div className="button-container">
-                <Link to="/signupComplete">
-                <button className="submit-button">
-                    가입</button>
-                </Link>  
-                <Link to="/login">
-                <button className="reset-button">
-                    취소</button>
-                </Link>
-            </div>
-            
-                            
-            
-        </div>
+                {/* 비밀번호 입력 */}
+                <div className="password-box2">
+                    <input 
+                        type="password"
+                        placeholder="비밀번호를 입력해주세요"
+                        value={password}
+                        onChange={handlePasswordChange}
+                        required
+                    />
+                    {passwordError && <p style={{ color: "red" }}>{passwordError}</p>}
+                </div>
+
+                {/* 비밀번호 확인 */}
+                <div className="password-again-box">
+                    <input 
+                        type="password"
+                        placeholder="비밀번호를 다시 입력해주세요"
+                        value={confirm}
+                        onChange={handleConfirmChange}
+                        required
+                    />
+                    {confirmError && <p style={{ color: "red" }}>{confirmError}</p>}
+                </div>
+
+                {/* 닉네임 입력 */}
+                <div className="nickname">
+                    <input 
+                        type="text" 
+                        placeholder="닉네임을 입력해주세요" 
+                        value={nickname}
+                        onChange={(e) => setNickname(e.target.value)}
+                        required
+                    />
+                </div>
+
+                {/* 에러 메시지 */}
+                {signupError && <p style={{ color: "red", textAlign: "center" }}>{signupError}</p>}
+
+                {/* 버튼 */}
+                <div className="button-container">
+                    <button type="submit" className="submit-button">가입</button>
+                    <Link to="/login">
+                        <button type="button" className="reset-button">취소</button>
+                    </Link>
+                </div>
+            </form>
         </div>
     );
 }
