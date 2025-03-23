@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 const MyInfo = () => {
-  const nickName = sessionStorage.getItem("name");
+  const nickName = localStorage.getItem("name");
   const navigate = useNavigate();
 
   const handleLogout = () => {

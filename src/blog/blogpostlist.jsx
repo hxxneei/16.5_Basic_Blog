@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchPostList, fetchUsers } from "../api"; // API 호출 함수 import
+import { fetchPost, fetchPostList, fetchUsers } from "../api"; // API 호출 함수 import
 import { Link, useNavigate } from "react-router-dom";
 import "../assets/blogpostlist.css";
 import TopMenu from "../components/TopMenu";
@@ -25,7 +25,20 @@ function Blogpostlist() {
     const loadPosts = async () => {
       try {
         const data = await fetchPostList(); // API 호출
-        setPosts(data); // 상태 업데이트
+
+        const postsWithName = await Promise.all(
+          data.map(async (post) => {
+            try {
+              const detailedPost = await fetchPost(post.postId); // ✅ 변수 이름 수정
+              return { ...post, name: detailedPost.name };
+            } catch (error) {
+              console.error("이름 불러오기 실패~", error);
+              return post;
+            }
+          })
+        );
+
+        setPosts(postsWithName);
       } catch (error) {
         console.error("게시글 불러오기 실패:", error);
       } finally {
@@ -66,7 +79,15 @@ function Blogpostlist() {
               );
             })}
           </div>
-          <button onClick={handlemainbtn}>메인화면</button>
+          <button
+            onClick={handlemainbtn}
+            style={{
+              display: "block",
+              marginBottom: "20px",
+            }}
+          >
+            메인화면
+          </button>
         </div>
       </div>
 
@@ -102,9 +123,7 @@ function Blogpostlist() {
                           >
                             {post.title}
                           </div>
-                          <div className="author">
-                            by {post.nickname || "익명"}
-                          </div>
+                          <div className="author">by {post.name || "익명"}</div>
                         </div>
                         <div className="date">
                           {new Date(post.postTime).toLocaleDateString("ko-KR", {
