@@ -3,7 +3,7 @@ import axios from "axios";
 import "../assets/global.css";
 import "../assets/profileedit.css";
 
-const API_BASE_URL = "https://dain-blog.inuappcenter.kr"; // 백엔드 API 주소
+const API_BASE_URL = "https://dain-blog.inuappcenter.kr"; // Api 주소
 
 function ProfileEdit() {
   const [userData, setUserData] = useState({
@@ -58,14 +58,12 @@ function ProfileEdit() {
       console.log("프로필 저장 성공:", response.data);
       alert("프로필이 성공적으로 저장되었습니다!");
 
-      // ✅ 사용자 이름, 아이디 다시 저장
       localStorage.setItem("userId", response.data.userId);
       localStorage.setItem("name", response.data.name);
       if (response.data.userId) {
         localStorage.setItem("userId", response.data.userId);
       }
 
-      // ✅ 새로고침 또는 메인 이동
       window.location.href = "/blogmain";
     } catch (error) {
       console.error("프로필 저장 실패:", error);

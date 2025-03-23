@@ -1,4 +1,3 @@
-// ✅ Blogmain.jsx
 import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import "../assets/blogmainnotpost.css";
@@ -22,7 +21,7 @@ function Blogmain() {
       const filtered = allPosts.filter(
         (post) => parseInt(post.userId) === userId
       );
-      console.log("✅ 내 게시글만:", filtered);
+      console.log(" 내 게시글만:", filtered);
       setMyPosts(filtered);
     } catch (error) {
       console.error("내 게시물 불러오기 실패", error);
@@ -32,7 +31,7 @@ function Blogmain() {
 
   useEffect(() => {
     if (!userId || isNaN(userId)) {
-      console.error("❌ 유효하지 않은 userId, 로그인 필요");
+      console.error(" 유효하지 않은 userId, 로그인 필요");
       alert("로그인이 만료되었습니다. 다시 로그인 해주세요.");
       navigate("/login");
       return;

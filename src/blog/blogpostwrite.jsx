@@ -28,9 +28,12 @@ function Blogpostwrite({
       return;
     }
 
-    const userId = localStorage.getItem("userId");
-    if (!userId) {
-      alert("로그인이 필요합니다.");
+    const rawUserId = localStorage.getItem("userId");
+    const userId = parseInt(rawUserId, 10);
+
+    if (!userId || isNaN(userId)) {
+      alert("로그인이 필요합니다. userId가 유효하지 않습니다.");
+      console.error("userId 확인 실패:", rawUserId);
       return;
     }
 
@@ -43,16 +46,22 @@ function Blogpostwrite({
 
     try {
       if (isEdit) {
-        await updatePost(originalPost.postId, userId, postData);
+        const res = await updatePost(originalPost.postId, userId, postData);
+        console.log(" 게시글 수정 성공:", res);
         alert("게시글이 수정되었습니다.");
       } else {
-        await writepost(userId, postData);
+        const res = await writepost(userId, postData);
+        console.log(" 게시글 작성 성공:", res);
         alert("게시글이 등록되었습니다.");
         navigate("/blogpostlist");
       }
-      refreshPosts(); // 왼쪽 리스트 새로고침
-      onComplete(); // 수정창 닫기
+
+      refreshPosts();
+      onComplete();
     } catch (error) {
+      console.error(" 게시글 처리 실패");
+      console.error("Status:", error.response?.status);
+      console.error("Message:", error.response?.data?.message);
       alert("게시글 처리에 실패했습니다.");
     }
   };

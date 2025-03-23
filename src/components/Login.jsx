@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { loginUser } from "../api"; //  API 파일에서 loginUser 가져오기
+import { loginUser } from "../api";
 import "../assets/Login.css";
 import { FaUser, FaLock } from "react-icons/fa";
 

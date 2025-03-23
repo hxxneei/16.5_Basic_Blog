@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_BASE_URL = "https://dain-blog.inuappcenter.kr";
 
-// ✅ 로그인
+//  로그인
 export const loginUser = async (loginId, password) => {
   try {
     const response = await axios.post(`${API_BASE_URL}/api/users/login`, {
@@ -16,7 +16,7 @@ export const loginUser = async (loginId, password) => {
   }
 };
 
-// ✅ 회원가입
+//  회원가입
 export const registerUser = async (loginId, password, nickname) => {
   try {
     const response = await axios.post(`${API_BASE_URL}/api/users/signup`, {
@@ -34,7 +34,7 @@ export const registerUser = async (loginId, password, nickname) => {
   }
 };
 
-// ✅ 게시글 작성
+//  게시글 작성
 export const writepost = async (userId, postData) => {
   try {
     const response = await axios.post(
@@ -48,7 +48,7 @@ export const writepost = async (userId, postData) => {
   }
 };
 
-// ✅ 게시글 목록 조회
+//  게시글 목록 조회
 export const fetchPostList = async () => {
   try {
     const response = await axios.get(`${API_BASE_URL}/api/posts/list`);
@@ -59,7 +59,7 @@ export const fetchPostList = async () => {
   }
 };
 
-// ✅ 게시글 상세 조회
+//  게시글 상세 조회
 export const fetchPost = async (postId) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/api/posts/${postId}`);
@@ -70,7 +70,7 @@ export const fetchPost = async (postId) => {
   }
 };
 
-// ✅ 게시글 수정
+//  게시글 수정
 export const updatePost = async (postId, userId, postData) => {
   try {
     const response = await axios.put(
@@ -84,7 +84,7 @@ export const updatePost = async (postId, userId, postData) => {
   }
 };
 
-// ✅ 게시글 삭제
+//  게시글 삭제
 export const deletePost = async (postId, userId) => {
   try {
     const response = await axios.delete(
@@ -97,7 +97,7 @@ export const deletePost = async (postId, userId) => {
   }
 };
 
-// ✅ 유저 목록 조회
+//  유저 목록 조회
 export const fetchUsers = async () => {
   try {
     const response = await axios.get(`${API_BASE_URL}/api/users`);
@@ -108,7 +108,7 @@ export const fetchUsers = async () => {
   }
 };
 
-// ✅ 유저 단일 조회
+//  유저 단일 조회
 export const fetchUserInfo = async (userId) => {
   try {
     const response = await axios.get(`${API_BASE_URL}/api/users/${userId}`);
@@ -119,7 +119,7 @@ export const fetchUserInfo = async (userId) => {
   }
 };
 
-// ✅ 유저 정보 수정
+//  유저 정보 수정
 export const updateUserInfo = async (userId, userData) => {
   try {
     const response = await axios.put(
