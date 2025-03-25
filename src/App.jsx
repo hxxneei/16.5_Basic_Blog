@@ -12,7 +12,7 @@ import BlogpostXlist from "./blog/blogpostXlist";
 import Blogpostwrite from "./blog/blogpostwrite";
 import Profileedit from "./blog/profileedit";
 import Blogmain from "./blog/blogmain";
-import PrivateRoute from "./components/PrivateRoute"; // ✅ 로그인 보호 컴포넌트
+import PrivateRoute from "./components/PrivateRoute";
 import "./App.css";
 
 function App() {

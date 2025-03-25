@@ -13,17 +13,15 @@ function Login() {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await loginUser(loginId, password); // API 호출
+      const response = await loginUser(loginId, password);
 
       console.log("로그인 성공:", response); // 응답 확인
 
-      // ✅ 로그인 정보 localStorage 저장
       localStorage.setItem("userId", response.userId);
       localStorage.setItem("name", response.name);
 
       alert(`로그인 성공! 환영합니다, ${response.name}님!`);
 
-      // ✅ 로그인 후 보호 페이지로 이동 (소문자 경로!)
       navigate("/blogmainnotpost");
     } catch (error) {
       console.error(
