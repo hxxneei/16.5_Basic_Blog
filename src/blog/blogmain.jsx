@@ -21,17 +21,26 @@ function Blogmain() {
       const filtered = allPosts.filter(
         (post) => parseInt(post.userId) === userId
       );
-      console.log(" 내 게시글만:", filtered);
       setMyPosts(filtered);
+
+      if (filtered.length > 0) {
+        const featuredPost = filtered.find((post) => post.featured);
+        const latestPost = [...filtered].sort(
+          (a, b) => new Date(b.postTime) - new Date(a.postTime)
+        )[0];
+        setSelectedPost(featuredPost ? featuredPost.postId : latestPost.postId);
+      } else {
+        setSelectedPost(null);
+      }
     } catch (error) {
       console.error("내 게시물 불러오기 실패", error);
       setMyPosts([]);
+      setSelectedPost(null);
     }
   }, [userId]);
 
   useEffect(() => {
     if (!userId || isNaN(userId)) {
-      console.error(" 유효하지 않은 userId, 로그인 필요");
       alert("로그인이 만료되었습니다. 다시 로그인 해주세요.");
       navigate("/login");
       return;
@@ -41,6 +50,7 @@ function Blogmain() {
 
   const handleClickPost = (postId) => {
     setSelectedPost(postId);
+    setIsWrite(false);
   };
 
   return (
@@ -73,27 +83,27 @@ function Blogmain() {
       <div className="right">
         <TopMenu />
         <div className="bottom">
-          {selectedPost ? (
-            <ViewPost
-              postId={selectedPost}
-              setSelectedPost={setSelectedPost}
-              setMyPosts={setMyPosts}
-              refreshPosts={loadMyPosts}
-            />
-          ) : !isWrite ? (
-            <>
-              <div className="notpost">불러올 글이 없습니다!</div>
-              <button className="newpost" onClick={() => setIsWrite(true)}>
-                새로운 글 작성하기
-              </button>
-            </>
-          ) : (
+          {isWrite ? (
             <Blogpostwrite
               onComplete={() => {
                 setIsWrite(false);
                 loadMyPosts();
               }}
             />
+          ) : selectedPost ? (
+            <ViewPost
+              postId={selectedPost}
+              setSelectedPost={setSelectedPost}
+              setMyPosts={setMyPosts}
+              refreshPosts={loadMyPosts}
+            />
+          ) : (
+            <>
+              <div className="notpost">불러올 글이 없습니다!</div>
+              <button className="newpost" onClick={() => setIsWrite(true)}>
+                새로운 글 작성하기
+              </button>
+            </>
           )}
         </div>
       </div>

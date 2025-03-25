@@ -50,7 +50,7 @@ function ViewPost({ postId, setSelectedPost, refreshPosts }) {
         onComplete={() => {
           setEditMode(false);
           setSelectedPost(null);
-          refreshPosts(); // 수정 완료 후 목록 갱신
+          refreshPosts();
         }}
       />
     );

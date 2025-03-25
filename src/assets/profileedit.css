@@ -1,194 +1,189 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap");
 
 .profileedit {
-    width: 1028px;
-    height: auto;
-    flex-shrink: 0;
-    border-radius: 15px;
-    background: #FFF;
-    /* padding: 0; */
-    padding-bottom: 3px;
+  width: 1028px;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 15px;
+  background: #fff;
+  padding-bottom: 3px;
 }
 .all-profile {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    margin: 20px 0;
-    margin-bottom: 0px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 20px 0;
+  margin-bottom: 0px;
 }
 
 .profile-header {
-    display: flex;  /* 가로 정렬 */
-    align-items: center;  /* 세로 중앙 정렬 */
-    gap: 20px; /* 프로필 사진과 닉네임 사이 간격 */
-    padding-top: 30px;
-    padding-left: 60px; /* 닉네임이 너무 붙지 않게 */
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding-top: 30px;
+  padding-left: 60px;
 }
 
 .profile-circle {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    background-color: #d9d9d9;
-    flex-shrink: 0; /* 크기 유지 */
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  flex-shrink: 0; /* 크기 유지 */
 }
 
 .profileedit .nickname {
-    font-size: 30px;
-    font-weight: 900;
-    margin: 0;
-    white-space: nowrap; /* 닉네임 줄바꿈 방지 */
+  font-size: 30px;
+  font-weight: 900;
+  margin: 0;
+  white-space: nowrap; /* 닉네임 줄바꿈 방지 */
 }
 
 .image-edit {
-    font-size: 10px;
-    color: #777;
-    text-align: center;
-    display: flex;
-    padding-left: 73px; 
-    padding-top: 10px;
+  font-size: 10px;
+  color: #777;
+  text-align: center;
+  display: flex;
+  padding-left: 73px;
+  padding-top: 10px;
 }
 
 .left-profile .profile-info {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 
 .separator {
-    margin: 0 10px; /* 🔥 이름과 값 사이 간격 조정 */
-    color: #555; /* 🔥 구분선 색상 */
-    font-weight: bold;
+  margin: 0 10px;
+  color: #555;
+  font-weight: bold;
 }
 
-.right-profile .intro-box{
-    margin-top: 0px;
-} 
- 
-.left-profile {
-    width: 50%;
+.right-profile .intro-box {
+  margin-top: 0px;
 }
-  
+
+.left-profile {
+  width: 50%;
+}
 
 .right-profile {
-    width: 500px;
-    height: 250px;
+  width: 500px;
+  height: 250px;
 
-    align-items: center;
-
+  align-items: center;
 }
-  
 
 .info-item {
-    display: flex; /* 가로 배치 */
-    align-items: center; /* 수직 가운데 정렬 */
-    justify-content: space-between; /* 양쪽 정렬 */
-    background: #d9d9d9;
-    padding: 10px 15px;
-    border-radius: 13px;
-    margin-bottom: 40px;
-    margin-left: 140px;
-
-
-    height: 30px;
-    width: 380px;
-
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #d9d9d9;
+  padding: 10px 15px;
+  border-radius: 13px;
+  margin-bottom: 40px;
+  margin-left: 140px;
+  height: 30px;
+  width: 380px;
 }
 .info-item label {
-    font-weight: bold;
-    display: block;
-    font-size: 13px;
-
+  font-weight: bold;
+  display: block;
+  font-size: 13px;
 }
 .info-item {
-    display: flex;
-    align-items: center;
-    background: #d9d9d9;
-    padding: 10px 15px;
-    border-radius: 13px;
-    margin-bottom: 40px;
-    margin-left: 140px;
-    height: 30px;
-    width: 380px;
+  display: flex;
+  align-items: center;
+  background: #d9d9d9;
+  padding: 10px 15px;
+  border-radius: 13px;
+  margin-bottom: 40px;
+  margin-left: 140px;
+  height: 30px;
+  width: 380px;
 }
 
 .info-item label {
-    font-weight: bold;
-    font-size: 13px;
-    width: 80px; /* 🔥 고정된 너비로 균형 맞추기 */
-    text-align: left;
+  font-weight: bold;
+  font-size: 13px;
+  width: 80px;
+  text-align: left;
 }
-  
 
-
+.info-item input,
+.info-item textarea {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: "Noto Sans KR";
+  font-size: 14px;
+  width: 100%;
+}
 .info-value {
-    color: #555;
-    font-size: 13px;
-    text-align: left; /* 🔥 왼쪽 정렬 */
-    flex-grow: 1; /* 🔥 값을 왼쪽으로 밀기 */
+  color: #555;
+  font-size: 13px;
+  text-align: left;
+  flex-grow: 1;
 }
-  
+
 /* 오른쪽 */
 
 .intro-box {
-    background: #d9d9d9;
-    padding: 15px; /* 여백 여유 */
-    border-radius: 15px; /* 둥근 테두리 */
-    width: 100%; /* 부모 기준 꽉차게 */
-    max-width: 320px; /* 최대 너비 제한 */
-    box-sizing: border-box;
-    margin: 0 auto; /* 가운데 정렬 */
-    margin-right: 145px;
+  background: #d9d9d9;
+  padding: 15px; /* 여백 여유 */
+  border-radius: 15px; /* 둥근 테두리 */
+  width: 100%; /* 부모 기준 꽉차게 */
+  max-width: 320px; /* 최대 너비 제한 */
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-right: 145px;
 }
 
 .intro-box label {
-    display: block;
-    margin-bottom: 3px;
-    font-weight: 900;
-    text-align: left; /* 왼쪽 정렬 */
-    font-size: 14px;
-    
-    border-bottom: 1px solid #999;
-    
+  display: block;
+  margin-bottom: 3px;
+  font-weight: 900;
+  text-align: left;
+  font-size: 14px;
 
-    padding-left: 2px; /* 글자 시작 조금 안으로 */
+  border-bottom: 1px solid #999;
+
+  padding-left: 2px; /* 글자 시작 조금 안으로 */
 }
 
 textarea {
-    border: none;
-    border-radius: 12px;
-    padding-left: 6px;
-    padding: 1px;
-    resize: none;
-    font-family: inherit;
-    font-weight: 900;
-    background: #d9d9d9; /* 내부 배경 흰색으로 분리 */
-    box-sizing: border-box;
-    width: 100%; 
-    height: 175px; 
-    font-size: 13px;
-    color: #333;
-    
+  border: none;
+  border-radius: 12px;
+  padding-left: 6px;
+  padding: 1px;
+  resize: none;
+  font-family: inherit;
+  font-weight: 900;
+  background: #d9d9d9; /* 내부 배경 흰색으로 분리 */
+  box-sizing: border-box;
+  width: 100%;
+  height: 175px;
+  font-size: 13px;
+  color: #333;
 }
 
 .buttons {
-    display: flex;
-    justify-content: center;
-    gap: 50px; /* 버튼 사이 간격 조정 */
-    margin-top: -20px;
-    position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 50px; /* 버튼 사이 간격 조정 */
+  margin-top: -20px;
+  position: relative;
 }
 
 .buttons button {
-    background: none; /* 배경 없애기 */
-    border: none; /* 기본 테두리 없애기 */
-    font-size: 16px; /* 글자 크기 조정 */
-    color: #999; /* 회색 글씨 */
-    cursor: pointer; /* 마우스 올리면 클릭 가능하도록 */
-    font-weight: bold;
-    text-decoration: underline; /* 밑줄 추가 */
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #999;
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .buttons button:hover {
-    color: #666; /* 마우스 올리면 색 진하게 */
+  color: #514f4f; /* 마우스 올리면 색 진하게 */
 }
-
- 

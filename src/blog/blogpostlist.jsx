@@ -20,40 +20,40 @@ function Blogpostlist() {
     setSelectedPost(postId);
   };
 
+  const loadPosts = async () => {
+    try {
+      const data = await fetchPostList();
+
+      const postsWithName = await Promise.all(
+        data.map(async (post) => {
+          try {
+            const detailedPost = await fetchPost(post.postId);
+            return { ...post, name: detailedPost.name };
+          } catch (error) {
+            console.error("이름 불러오기 실패:", error);
+            return post;
+          }
+        })
+      );
+
+      setPosts(postsWithName);
+    } catch (error) {
+      console.error("게시글 불러오기 실패:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const loadUsers = async () => {
+    try {
+      const data = await fetchUsers();
+      setUsers(data);
+    } catch (error) {
+      console.error("유저 목록 불러오기 실패:", error);
+    }
+  };
+
   useEffect(() => {
-    const loadPosts = async () => {
-      try {
-        const data = await fetchPostList();
-
-        const postsWithName = await Promise.all(
-          data.map(async (post) => {
-            try {
-              const detailedPost = await fetchPost(post.postId);
-              return { ...post, name: detailedPost.name };
-            } catch (error) {
-              console.error("이름 불러오기 실패:", error);
-              return post;
-            }
-          })
-        );
-
-        setPosts(postsWithName);
-      } catch (error) {
-        console.error("게시글 불러오기 실패:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    const loadUsers = async () => {
-      try {
-        const data = await fetchUsers();
-        setUsers(data);
-      } catch (error) {
-        console.error("유저 목록 불러오기 실패:", error);
-      }
-    };
-
     loadPosts();
     loadUsers();
   }, []);
@@ -78,10 +78,7 @@ function Blogpostlist() {
                 </div>
               ))}
           </div>
-          <button
-            onClick={handleMainBtn}
-            style={{ display: "block", marginBottom: "20px" }}
-          >
+          <button className="mainpage-btn" onClick={handleMainBtn}>
             메인화면
           </button>
         </div>
@@ -95,7 +92,11 @@ function Blogpostlist() {
 
         <div className="listbottom">
           {selectedPost ? (
-            <ViewPost postId={selectedPost} setSelectedPost={setSelectedPost} />
+            <ViewPost
+              postId={selectedPost}
+              setSelectedPost={setSelectedPost}
+              refreshPosts={loadPosts} // 수정 후 목록 갱신을 위해 추가
+            />
           ) : loading ? (
             <p>게시글을 불러오는 중...</p>
           ) : posts.length === 0 ? (
@@ -124,7 +125,9 @@ function Blogpostlist() {
                       })}
                     </div>
                   </div>
-                  <div className="post">{post.content.substring(0, 50)}...</div>
+                  <div className="post">
+                    {post.content?.substring(0, 50) || ""}...
+                  </div>
                 </div>
               ))
           )}

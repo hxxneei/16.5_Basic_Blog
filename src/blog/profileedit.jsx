@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../assets/global.css";
 import "../assets/profileedit.css";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const API_BASE_URL = "https://dain-blog.inuappcenter.kr";
 
@@ -16,6 +16,7 @@ function ProfileEdit() {
   });
 
   const userId = parseInt(localStorage.getItem("userId"), 10);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -61,15 +62,16 @@ function ProfileEdit() {
 
       localStorage.setItem("userId", response.data.userId);
       localStorage.setItem("name", response.data.name);
-      if (response.data.userId) {
-        localStorage.setItem("userId", response.data.userId);
-      }
 
-      window.location.href = "/blogmain";
+      navigate("/blogmain");
     } catch (error) {
       console.error("프로필 저장 실패:", error);
       alert("프로필 저장 중 오류 발생!");
     }
+  };
+
+  const handleCancel = () => {
+    navigate("/blogmain");
   };
 
   return (
@@ -143,12 +145,8 @@ function ProfileEdit() {
       </div>
 
       <div className="buttons">
-        <Link to="/blogmain">
-          <button onClick={handleSubmit}>적용</button>
-        </Link>
-        <Link to="/blogmain">
-          <button onClick={() => window.location.reload()}>취소</button>
-        </Link>
+        <button onClick={handleSubmit}>적용</button>
+        <button onClick={handleCancel}>취소</button>
       </div>
     </div>
   );
