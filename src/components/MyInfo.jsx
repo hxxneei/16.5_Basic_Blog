@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 
 const MyInfo = () => {
-  const nickName = localStorage.getItem("name");
+  const nickName = localStorage.getItem("name"); // 이름 꺼내옴
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("userId");
-    localStorage.removeItem("name");
+    localStorage.removeItem("name"); // 상태 초기화(로그아웃 처리함)
     alert("로그아웃 되었습니다.");
     navigate("/login");
   };

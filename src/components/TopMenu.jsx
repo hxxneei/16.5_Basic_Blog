@@ -4,7 +4,6 @@ import "../assets/TopMenu.css";
 const TopMenu = () => {
   const navigate = useNavigate();
   const onClickWriteBtn = () => {
-    // setIsWrite(!isWrite);
     navigate("/blogpostwrite");
   };
   const onClickFriendBtn = () => {

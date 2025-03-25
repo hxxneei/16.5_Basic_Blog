@@ -5,25 +5,27 @@ import "../assets/Login.css";
 import { FaUser, FaLock } from "react-icons/fa";
 
 function Login() {
-  const [loginId, setLoginId] = useState("");
+  const [loginId, setLoginId] = useState(""); // 입력 받은 값을 비밀번호 상태로 저장함
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  // 로그인 API 요청
   const handleLogin = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // 새로고침 X
     try {
+      //로그인 성공시,
       const response = await loginUser(loginId, password);
 
-      console.log("로그인 성공:", response); // 응답 확인
-
+      console.log("로그인 성공:", response);
       localStorage.setItem("userId", response.userId);
       localStorage.setItem("name", response.name);
+
+      // 로그인 정보를 localstorage에 저장 -> 페이지 이동
 
       alert(`로그인 성공! 환영합니다, ${response.name}님!`);
 
       navigate("/blogmainnotpost");
     } catch (error) {
+      // 로그인 실패시,
       console.error(
         "로그인 실패:",
         error.response?.data?.message || "서버 오류"

@@ -1,9 +1,10 @@
-import axios from "axios";
+import axios from "axios"; // http 요청 라이브러리
 
 const API_BASE_URL = "https://dain-blog.inuappcenter.kr";
 
 //  로그인
 export const loginUser = async (loginId, password) => {
+  // 비동기로 promise를 반환함. await은 promise가 성공, 실패까지 기다림
   try {
     const response = await axios.post(`${API_BASE_URL}/api/users/login`, {
       loginId,
