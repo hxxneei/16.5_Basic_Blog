@@ -5,25 +5,26 @@ import "../assets/Login.css";
 import { FaUser, FaLock } from "react-icons/fa";
 
 function Login() {
-  const [loginId, setLoginId] = useState(""); //  loginId 상태값
+  const [loginId, setLoginId] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  //  로그인 API 요청
+  // 로그인 API 요청
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await loginUser(loginId, password); //  API 호출
+      const response = await loginUser(loginId, password); // API 호출
 
-      console.log("로그인 성공:", response); //응답확인
+      console.log("로그인 성공:", response); // 응답 확인
 
-      localStorage.setItem("userId", response.userId); // 또는 sessionStorage
+      // ✅ 로그인 정보 localStorage 저장
+      localStorage.setItem("userId", response.userId);
       localStorage.setItem("name", response.name);
 
-      // sessionStorage.setItem("name", response.name);
-
       alert(`로그인 성공! 환영합니다, ${response.name}님!`);
-      navigate("/Blogmainnotpost"); //  로그인 성공 시 이동
+
+      // ✅ 로그인 후 보호 페이지로 이동 (소문자 경로!)
+      navigate("/blogmainnotpost");
     } catch (error) {
       console.error(
         "로그인 실패:",
@@ -62,7 +63,7 @@ function Login() {
             required
           />
         </div>
-        <button type="submit">LOGIN</button> {/* API 요청 실행 */}
+        <button type="submit">LOGIN</button>
       </form>
 
       <div className="signup-text">

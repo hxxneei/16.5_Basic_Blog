@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "../assets/global.css";
 import "../assets/profileedit.css";
+import { Link } from "react-router-dom";
 
-const API_BASE_URL = "https://dain-blog.inuappcenter.kr"; // Api 주소
+const API_BASE_URL = "https://dain-blog.inuappcenter.kr";
 
 function ProfileEdit() {
   const [userData, setUserData] = useState({
@@ -142,8 +143,12 @@ function ProfileEdit() {
       </div>
 
       <div className="buttons">
-        <button onClick={handleSubmit}>적용</button>
-        <button onClick={() => window.location.reload()}>취소</button>
+        <Link to="/blogmain">
+          <button onClick={handleSubmit}>적용</button>
+        </Link>
+        <Link to="/blogmain">
+          <button onClick={() => window.location.reload()}>취소</button>
+        </Link>
       </div>
     </div>
   );

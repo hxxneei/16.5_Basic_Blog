@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { writepost, updatePost } from "../api";
+import { Link } from "react-router-dom";
+
 import "../assets/blogpostwrite.css";
 
 function Blogpostwrite({
@@ -99,9 +101,11 @@ function Blogpostwrite({
             <button className="btn-post" onClick={handleSubmit}>
               {isEdit ? "수정 완료" : "게시"}
             </button>
-            <button className="btn-cancel" onClick={() => onComplete()}>
-              취소
-            </button>
+            <Link to="/blogmain">
+              <button className="btn-cancel" onClick={() => onComplete()}>
+                취소
+              </button>
+            </Link>
           </div>
         </div>
       </div>

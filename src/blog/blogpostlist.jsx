@@ -68,12 +68,15 @@ function Blogpostlist() {
             <br /> List
           </div>
           <div className="friends-container">
-            {users.map((user, index) => (
-              <div key={index} className="profile">
-                <div className="circle"></div>
-                <div className="name">{user.name}</div>
-              </div>
-            ))}
+            {users
+              .slice()
+              .reverse()
+              .map((user, index) => (
+                <div key={index} className="profile">
+                  <div className="circle"></div>
+                  <div className="name">{user.name}</div>
+                </div>
+              ))}
           </div>
           <button
             onClick={handleMainBtn}

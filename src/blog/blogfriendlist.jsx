@@ -72,17 +72,20 @@ function Blogfriendlist() {
       <div className="right">
         <TopMenu />
         <div className="friends-container">
-          {users.map((user, index) => {
-            return (
-              <div key={index} className="profile">
-                <div className="human">
-                  <div className="circle"></div>
-                  <div className="name">{user.name}</div>
+          {users
+            .slice()
+            .reverse()
+            .map((user, index) => {
+              return (
+                <div key={index} className="profile">
+                  <div className="human">
+                    <div className="circle"></div>
+                    <div className="name">{user.name}</div>
+                  </div>
+                  <div className="line" />
                 </div>
-                <div className="line" />
-              </div>
-            );
-          })}
+              );
+            })}
         </div>
       </div>
     </div>

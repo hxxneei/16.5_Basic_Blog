@@ -11,25 +11,93 @@ import BlogpostOlist from "./blog/blogpostOlist";
 import BlogpostXlist from "./blog/blogpostXlist";
 import Blogpostwrite from "./blog/blogpostwrite";
 import Profileedit from "./blog/profileedit";
-import "./App.css";
 import Blogmain from "./blog/blogmain";
+import PrivateRoute from "./components/PrivateRoute"; // ✅ 로그인 보호 컴포넌트
+import "./App.css";
 
 function App() {
   return (
     <Router>
       <Routes>
+        {/* 공개 경로 (로그인 전) */}
         <Route path="/" element={<Login />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signupcomplete" element={<SignupComplete />} />
-        <Route path="/blogmain" element={<Blogmain />} />
-        <Route path="/blogmainnotpost" element={<Blogmainnotpost />} />
-        <Route path="/blogfriendlist" element={<Blogfriendlist />} />
-        <Route path="/blogpostlist" element={<Blogpostlist />} />
-        <Route path="/blogpostOlist" element={<BlogpostOlist />} />
-        <Route path="/blogpostXlist" element={<BlogpostXlist />} />
-        <Route path="/blogpostwrite" element={<Blogpostwrite />} />
-        <Route path="/profileedit" element={<Profileedit />} />
+
+        {/* 로그인 이후 접근 가능한 보호 경로 */}
+        <Route
+          path="/blogmain"
+          element={
+            <PrivateRoute>
+              <Blogmain />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/blogmainnotpost"
+          element={
+            <PrivateRoute>
+              <Blogmainnotpost />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/blogfriendlist"
+          element={
+            <PrivateRoute>
+              <Blogfriendlist />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/blogpostlist"
+          element={
+            <PrivateRoute>
+              <Blogpostlist />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/blogpostOlist"
+          element={
+            <PrivateRoute>
+              <BlogpostOlist />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/blogpostXlist"
+          element={
+            <PrivateRoute>
+              <BlogpostXlist />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/blogpostwrite"
+          element={
+            <PrivateRoute>
+              <Blogpostwrite />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/profileedit"
+          element={
+            <PrivateRoute>
+              <Profileedit />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/viewpost/:postId"
+          element={
+            <PrivateRoute>
+              <ViewPost />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </Router>
   );
